@@ -8,6 +8,7 @@ const messageEl = document.getElementById("message");
 let tiles = [];
 let timer = 0;
 let moves = 0;
+let hasStated = false;
 let interval = null;
 
 
@@ -21,7 +22,7 @@ function init() {
 
   
 shuffleBtn.addEventListener("click", () => {
-  timer = 0;
+
   moves = 0;
   timerEl.textContent = timer;
   movesEl.textContent = moves;
@@ -99,10 +100,12 @@ function checkWin() {
 
 
 function startTimer() {
+  if(hasStated) return;
   interval = setInterval(() => {  
     timer++;
     timerEl.textContent = timer;
   }, 1000);
+  hasStated=true
 }
 
 function stopTimer() {
